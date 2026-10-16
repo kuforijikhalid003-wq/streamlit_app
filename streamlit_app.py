@@ -1,45 +1,21 @@
-# Day 6
+# Day 13
 
-import streamlit as st
-
-st.write('# Uploading your Streamlit app on GitHub')
-
-import altair as alt
+import platform
 import numpy as np
 import pandas as pd
 import streamlit as st
 
-st.header('st.write')
-# Example 1
+st.title("☁️ Cloud Dev Test")
+st.write("If you can see this, your cloud environment works!")
 
-st.write('Hello, *World!* :sunglasses:')
+st.subheader("Environment info")
+st.write("Python version:", platform.python_version())
+st.write("OS:", platform.system())
 
-# Example 2
-
-st.write('### Display Numbers ###')
-st.write(1234)
-
-# Example 3
-
-st.write('### Display a DataFrame ###')
-df = pd.DataFrame({
-    'first column': [1, 2, 3, 4],
-    'second column': [10, 20, 30, 40]
-})
-st.write(df)
-
-# Example 4
-
-st.write('### Accept Multiple Arguments ###')
-st.write('Below is a DataFrame:', df, 'Above is a dataframe.')
-
-# Example 5
-
-st.write('### Display Charts ###')
-df2  = pd.DataFrame(
-    np.random.randn(200, 3),
-    columns=['a', 'b', 'c']
-)
+st.subheader("Interactive check")
+n = st.slider("Number of points", 10, 200, 50)
+data = pd.DataFrame(np.random.randn(n, 3), columns=["a", "b", "c"])
+st.line_chart(data)
 
 c = alt.Chart(df2).mark_circle().encode(
     x='a', y='b', size='c', color='c', tooltip=['a', 'b', 'c']
